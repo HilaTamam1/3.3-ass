@@ -1,0 +1,39 @@
+<div class="details">
+    <center>
+        <h1>Restore Password</h1>
+    </center>
+    <div id="userName" class="register" style="top: 20%;" ng-if="show1">
+        <label for="Que1">
+            <b>User Name</b>
+        </label>
+        <input type="text" placeholder="Please enter your user name" id="userName" name="userName" ng-model="user.userID" required>
+        <button id=sendUserName id="signinButton" class="logandSignBtn" type="submit" ng-click="checkUser()">Send</button>
+        <label for="error">
+            <b>{{error}}</b>
+        </label>
+    </div>
+
+    <div id="queANDAns" class="register" style="top:20%" ng-if="show2">
+        <label for="Que1">
+            <b>{{que1}}</b>
+        </label>
+        <input type="text" placeholder="please answer question 1" id="ans1" name="ans1" ng-model="user.securityAns1" required>
+        <label for="Que2">
+            <b>{{que2}}</b>
+        </label>
+        <input type="text" placeholder="lease answer question 2" id="ans2" name="ans2" ng-model="user.securityAns2" required>
+        <center>
+            <b>{{error}}</b>
+        </center>
+        
+        <button id=sendAnswer id="signinButton" class="logandSignBtn" type="submit" ng-click="checkAns()">Send Answer</button>
+    </div>
+
+    <div>
+        <label for="pass" ng-if="show3">
+            <center>
+                    <b>Your password is: {{pass}}</b>
+            </center>
+        </label>
+    </div>
+</div>

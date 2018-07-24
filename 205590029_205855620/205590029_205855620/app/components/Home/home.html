@@ -1,0 +1,59 @@
+<div class="details">
+
+                <center>
+                        <h1>Welcome to Berlin Web</h1>
+                        </br>
+                        <h4>Sign up now and manage the points </h4>
+                        <h4>of interest you'd like to visit!</h4>
+                        <button ng-click="Registertion()" id=signinButton type="submit">Register</button>
+                        <h5>Already registered?</h5>
+                        <h5> Sign in!</h5>
+        
+                        <div class="container">
+                                <label for="uname">
+                                        <b>Username</b>
+                                </label>
+                                <input type="text" placeholder="Enter Username" ng-model="user.userID" name="uname" required>
+                                <label for="psw">
+                                        <b>Password</b>
+                                </label>
+                                <input type="password" placeholder="Enter Password" ng-model="user.password" name="psw" required>
+                                <label for="psw">
+                                        <b>{{error}}</b>
+                                </label>
+                        </div>
+                        <button id=signinButton ng-click="login()" type="submit">Login</button>
+                        <a ng-click="restorePage()"><u>forget your password?</u></a>
+                </center>
+                </br>
+                </br>
+                <h2>Explore</h2>
+                <table ng-repeat="(id , point) in randPoint" style="left: 10%; width:100%; top:50%;" cellpadding=10 cellspacing="0" width="100%">
+                        <!-- <tr ng-repeat="(id , point) in randPoint"> -->
+                        <tr>
+                                <td colspan=3>
+                                        <h3><b><span ng-bind="point.name" ng-click="PointDetails(point.pointID)"></span></b></h3>
+                                        <span>{{point.categoryName}}|</span>
+                                        <span><img src="/assets/img/rating.png" width=30px; height=30px;></img></span>
+                                        <span ng-bind="point.rate"></span>
+                                        <!-- <span><img src="/assets/img/emptyFav.png" ng-if="(!inFav(point.pointID) && login)" ng-click="updateFav(point.pointID)" ng-style="{'height': '20px','width': '20px', 'position':'absolute','left':'95%'}"></img></span>
+                                        <span><img src="/assets/img/colorFav.png" ng-if="(inFav(point.pointID) && login)" ng-click="updateFav(point.pointID)" ng-style="{'height': '20px','width': '20px', 'position':'absolute','left':'95%'}"></img></span> -->
+                                </td>
+                        </tr>
+                        <tr>
+                                <td width="28%" align=center>
+                                        <img ng-style="{'height': '150px','width': '220px'}" ng-src="{{point.pic1}}" ng-click="PointDetails(point.pointID)">
+                                </td>
+                                <td width="70%">
+                                        <span ng-bind="point.desription"></span>
+                                        <div></div>
+                                        <img src="/assets/img/location.png" width=20px; height=20px;></img>
+                                        <span ng-bind="point.location"></span>
+        </div>
+        </td>
+        
+        
+        </tr>
+        </table>
+        </br>
+        </div>

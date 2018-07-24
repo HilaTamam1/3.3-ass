@@ -1,0 +1,93 @@
+<div class="details">
+<button ng-click="saveToDB()" class="searchBtn" style=" width: 32%; position: absolute; right:0%">Save favories points & order <img src="/assets/img/archive.png" width=25px; height=25px;></button></br>
+        <center><h1>My Favorites</h1></center>
+<button ng-click="sortBy('rate')" class="searchBtn" style="width: 18%">Order By Rate
+  <span class="sortorder" ng-show="propertyName === 'rate'" ng-class="{reverse: reverse}"></span>
+</button>
+<button ng-click="sortBy('categoryName')" class="searchBtn" style="width: 20%">Order By Category
+    <span class="sortorder" ng-show="propertyName === 'categoryName'" ng-class="{reverse: reverse}"></span>
+</button>  
+<button ng-click="sortBy('priority')" class="searchBtn" style=" width: 20%;"> Order By Priority
+    <span class="sortorder" ng-show="propertyName === 'priority'" ng-class="{reverse: reverse}"></span>
+</button>
+
+<table ng-repeat="( id , point ) in favPoints | orderBy : 'priority' |orderBy:propertyName:reverse" style="left: 10%; width:100%; top:50%;"  cellpadding=10 cellspacing="0" width="100%">
+<tr>
+  <td colspan=4>
+            <div class="container">
+                <!-- Modal -->
+                <div class="modal fade" id="myModal_{{point.pointID}}" role="dialog">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <div class="modal-header">
+                       
+                        <center>
+                            <h3 class="modal-title">{{point.name}}</h3>
+                        </center>
+                      </div>
+                      
+                      <div class="modal-body">
+                        
+                      <span id="rateLeft" style="width:40%" ng-if="show1">
+                            <span>give rate to this point</span>
+                            <br>
+                            <select id="rate11" ng-model="review_rate.rate" style="width:20%" >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+            
+                            <br>
+                            <button type="button" ng-click="rateInNumber(point.pointID)" >Rate</button>
+                            <div>{{error1}}</div>
+                      </span>
+                      <span id="rateRight" style="width:40%;top:0%" ng-if="show2">
+                            <span>give review to this point</span>
+                            </br>
+                            <textarea id="reviewId" ng-model="review_rate.review" style="height: 100px"></textarea>
+                            </br>
+                            <button type="button" ng-click="rateInWords(point.pointID)" >Give Review</button>
+                            <div>{{error2}}</div>
+                      </span>
+                      </div>
+                      <center>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </center>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <h3><b><span ng-bind="point.name" ng-click="PointDetails(point.pointID)"></span></b></h3>
+                <span>{{point.categoryName}}|</span>
+                <span><img src="/assets/img/rating.png" width=30px; height=30px;></img></span>
+                <span ng-bind="point.rate"></span>
+                <button  type="submit" class="reviewBtn" data-toggle="modal" data-target="#myModal_{{point.pointID}}" ng-click="show()">give review</button>
+                <span><img src="/assets/img/emptyFav.png"  ng-if="!inFav(point.pointID)" ng-click="updateFav(point.pointID)" ng-style="{'height': '20px','width': '20px', 'position':'absolute','left':'95%'}"></img></span>
+                <span><img src="/assets/img/colorFav.png"  ng-if="(inFav(point.pointID))" ng-click="updateFav(point.pointID)" ng-style="{'height': '20px','width': '20px', 'position':'absolute','left':'95%'}"></img></span>
+        </td>
+</tr>
+<tr>
+        <td width="28%" align=center>
+                <img ng-style="{'height': '150px','width': '220px'}"  ng-src="{{point.pic1}}" ng-click="PointDetails(point.pointID)">
+        </td>      
+        <td width="65%">
+                <span ng-bind="point.desription"></span>
+                <div></div><img src="/assets/img/location.png" width=20px; height=20px;></img><span ng-bind="point.location"></span></div>
+        </td>
+        <td width="20%" align=center>
+              priority:
+              <!-- <input id="myPriority_{{point.pointID}}" class="priority" ng-model="point.priority"  type="number" min="1"  max="{{favPoints.length}}">
+              <input class="reviewBtn" type="button" ng click="updatePriority(point.pointID)" value="save"> -->
+              <button id="reviewBtn" class="reviewBtn" style="width: 100%" ng-click="swapUp(point.pointID)"><i class="up"></i></button>
+              <div>{{point.priority}}</div>
+              <button id="reviewBtn" class="reviewBtn" style="width: 100%" ng-click="swapDown(point.pointID)"><i class="down"></i></button>
+        </td> 
+
+</tr>      
+</table>
+</div>

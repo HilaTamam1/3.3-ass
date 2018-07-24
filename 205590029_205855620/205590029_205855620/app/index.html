@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="BerlinApp">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+        crossorigin=""></script>
+    <title>BerlinApp</title>
+</head>
+
+<body ng-controller="indexController as indexController">
+    <ul>
+        <li>
+            <a id="home" class="active" href="#/" style="display: block;">Home</a>
+        </li>
+        <li>
+            <a id="about" href="#/About" style="display: block;">About</a>
+        </li>
+        <li>
+            <a id="poi" href="#/POI" style="display: block;">Points Of Interes</a>
+        </li>
+        <li>
+            <a id="myPage" href="#/MyPage" style="display: none;">My Page</a>
+        </li>
+        <li>
+            <a id="fav" href="#/Favorites" style="display: none;">Favorites</a>
+        </li>
+        <li>
+            <a id="pointDet" href="#/PointDetails" style="display: none;">Point Details</a>
+        </li>
+        <li>
+            <a id="reg" href="#/Registertion" style="display: block;">Registertion</a>
+        </li>
+        <span ng-model="indexController.userName" style="display: block;">hello {{indexController.userName}}</span>
+        <span id="logout" ng-click="indexController.pressLogout()" style="display: none;">Logout | </span>
+    </ul>
+
+    <div ng-view></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="/assets/node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="indexController.js"></script>
+    <script src="components/Home/homeCtrl.js"></script>
+    <script src="components/MyPage/myPageController.js"></script>
+    <script src="components/Registertion/registertionController.js"></script>
+    <script src="components/RestorePass/restoreController.js"></script>
+    <script src="components/About/aboutController.js"></script>
+    <script src="components/POI/poiCtrl.js"></script>
+    <script src="components/PointDetails/pointDetailsController.js"></script>
+    <script src="components/Favorites/favoritesController.js"></script>
+    <script src="shared/Services/serviceController.js"></script>
+    <script scr="shared/Services/localStorageModel.js"></script>
+    <!-- <script src="/assets/js/addOption.js"></script> -->
+    <script src="/assets/js/state.js"></script>
+    <script src="/assets/js/slides.js"></script>
+
+</body>
+
+
+</html>

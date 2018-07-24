@@ -1,0 +1,103 @@
+<div>
+        <form class="register" id="register-form" name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+            <center>
+                <h1 style="font-family: pac, sans-serif;">Registertion</h1>
+            </center>
+    
+            <label>First Name:</label>
+            <input class="form-control" name="firstName" ng-model="user.firstName" id="firstName" placeholder="First name" type="text" required>
+            <span class="errorValidation" ng-show="userForm.firstName.$error.required">This field is required!</span>
+            <br>
+            <label>Last Name:</label>
+            <input class="form-control" name="lastName" ng-model="user.lastName" id="lastName" placeholder="Last name" type="text" required>
+            <span class="errorValidation" ng-show="userForm.lastName.$error.required">This field is required!</span>
+            <br>
+            <!-- USERNAME -->
+            <div class="form-group"  ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }" required>
+                <label>User Name</label>
+                <input type="text" name="username" class="form-control" ng-model="user.userID" placeholder="User name" ng-pattern="/^[a-zA-Z]*$/" ng-minlength="3" ng-maxlength="8" required>
+                <p class="errorValidation" ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+                <p class="errorValidation" ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+                <p class="errorValidation" ng-show="userForm.username.$error.pattern" class="help-block">Username must contain only letters in English.</p>
+                <span class="errorValidation" ng-show="userForm.username.$error.required">This field is required!</span>
+            </div>
+            <!-- PASSWORD -->
+            <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password" ng-pattern= "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{2,}$/" ng-model="user.password"
+                    ng-minlength="5" ng-maxlength="10" required>
+                <p class="errorValidation" ng-show="userForm.password.$error.minlength" class="help-block">Password is too short.</p>
+                <p class="errorValidation" ng-show="userForm.password.$error.maxlength" class="help-block">Password is too long.</p>
+                <p class="errorValidation" ng-show="userForm.password.$error.pattern" class="help-block"> Password must contain at least one letter in English and one number </p>
+                <span class="errorValidation" ng-show="userForm.password.$error.required">This field is required!</span>
+    
+            </div>
+            <!-- EMAIL -->
+            <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" ng-model="user.email" id="email" placeholder="name@gmail.com" required>
+                <p class="errorValidation" ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+                <span class="errorValidation" ng-show="userForm.email.$error.required">This field is required!</span>
+            </div>
+            <label>city:</label>
+            <input class="form-control" name="city" ng-model="user.city" id="city" placeholder="City" type="text" required>
+            <span class="errorValidation" ng-show="userForm.city.$error.required">This field is required!</span>
+            <br>
+            <label>country:</label>
+            <br>
+            <select class="form-control" name="country" id="country" ng-model="user.country"  required>
+                <option ng-repeat="country in countries">{{country}}</option>
+                <span class="errorValidation" ng-show="userForm.country.$error.required">This field is required!</span>
+            </select>
+            <br>
+            <label>Question 1:</label>
+            <br>
+            <select id="que1" ng-model="user.que1" required>
+                <option value="What is the name of your elementary school?">What is the name of your elementary school?</option>
+                <option value="what is the name of your first pet?">what is the name of your first pet?</option>
+                <option value="what is your favorite animal?">what is your favorite animal?</option>
+                <option value="What is your fathers middle name?">What is your fathers middle name?</option>
+                <span class="errorValidation" ng-show="userForm.que1.$error.required">This field is required!</span>
+            </select>
+            <br>
+            <label>Answer 1:</label>
+            <input class="form-control" ng-model="user.ans1" name="ans1" id="ans1" placeholder="please answer question 1" type="text" required>
+            <span class="errorValidation" ng-show="userForm.ans1.$error.required">This field is required!</span>
+    
+            <br>
+            <label>Question 2:</label>
+            <br>
+            <select id="que2" ng-model="user.que2" required>
+                <option value="what is mothers maiden name?">what is mothers maiden name?</option>
+                <option value="what is your favorite book?">what is your favorite book?</option>
+                <option value="When is your anniversary date?">When is your anniversary date?</option>
+                <option value="What is your best friends name?">What is your best friends name?</option>
+                <span class="errorValidation" ng-show="userForm.que2.$error.required">This field is required!</span>
+            </select>
+            <br>
+            <label>Answer 2:</label>
+            <input class="form-control" name="ans2" id="ans2" ng-model="user.ans2" placeholder="please answer question 2" type="text" required>
+            <span class="errorValidation" ng-show="userForm.ans2.$error.required">This field is required!</span>
+            <label>Please choose the categories that you are interesed in:</label>
+            <br>
+            <br>
+            <br>
+            <div>
+                <left>
+                    <input type="checkbox" ng-model="cats.cat1" name="1" value="1"> shopping
+                    <br>
+                    <input type="checkbox" ng-model="cats.cat2" name="2" value="2">history
+                    <br>
+                    <input type="checkbox" ng-model="cats.cat3" name="3" value="3">museum
+                    <br>
+                    <input type="checkbox" ng-model="cats.cat4" name="4" value="4">restaurant
+                    <br>
+                    <span class="errorValidation" ng-show="!valCat">please choose at least 2 of categories</span>
+                </left>
+            </div>
+            <br>
+            <center>
+                <input type="submit" class="logandSignBtn" id="signinButton" value="Submit" ng-click="Submit()">
+            </center>
+        </form>
+    </div>

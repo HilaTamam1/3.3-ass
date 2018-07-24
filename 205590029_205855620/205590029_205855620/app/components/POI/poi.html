@@ -1,0 +1,46 @@
+<div class="details">
+<div ng-show="login" class="favFolder">
+        <img ng-click="favPage()" ng-show="login" src="/assets/img/favFolder.ico" width=50px; height=50px;></img>
+        <span ng-show="login" ng-bind="numOfFAv"></span>
+</div>
+<center><h1>Points of Inters</h1></center>
+<span> Search by category: </span>
+<select id="country" ng-model="searchCategory" style="width:15% ">
+                <option value="All">All</option>
+                <option value="Shopping">Shopping</option>
+                <option value="History">History</option>
+                <option value="Museum">Museum</option>
+                <option value="Restaurant">Restaurant</option>
+</select>
+<button ng-click="PointsByCat()" class="searchBtn" style="width: 10%">Search</button> 
+<button ng-click="sortBy('rate')" class="searchBtn" style="width: 18%">Order By Rate
+        <span class="sortorder" ng-show="propertyName === 'rate'" ng-class="{reverse: reverse}"></span>
+</button> 
+<input class="form-control" ng-model="toFilter" placeholder="Search points" type="text" style="width:30%; margin-left: 5%;">
+
+<table ng-repeat="( id , point ) in points | orderBy:propertyName:reverse | filter : toFilter as result " style="left: 10%; width:100%; top:50%;"  cellpadding=10 cellspacing="0" width="100%">
+                <center></br><b><span ng-if="result.length==0">No Results</span></b></h4></center>
+        <tr>
+                <td colspan=3>
+                        <h3><b><span ng-bind="point.name" ng-click="PointDetails(point.pointID)"></span></b></h3>
+                        <span>{{point.categoryName}}|</span>
+                        <span><img src="/assets/img/rating.png" width=30px; height=30px;></img></span>
+                        <span ng-bind="point.rate">%</span>
+                        <span><img src="/assets/img/emptyFav.png" ng-if="(!inFav(point.pointID) && login)" ng-click="updateFav(point.pointID)" ng-style="{'height': '20px','width': '20px', 'position':'absolute','left':'95%'}"></img></span>
+                        <span><img src="/assets/img/colorFav.png" ng-if="(inFav(point.pointID) && login)" ng-click="updateFav(point.pointID)" ng-style="{'height': '20px','width': '20px', 'position':'absolute','left':'95%'}"></img></span>
+                </td>
+        </tr>
+        <tr>
+                <td width="28%" align=center>
+                        <img ng-style="{'height': '150px','width': '220px'}"  ng-src="{{point.pic1}}" ng-click="PointDetails(point.pointID)">
+                </td>      
+                <td width="70%">
+                        <span ng-bind="point.desription"></span>
+                        <div></div><img src="/assets/img/location.png" width=20px; height=20px;></img><span ng-bind="point.location"></span></div>
+                </td>
+
+         
+        </tr>       
+</table>
+</br>
+</div>

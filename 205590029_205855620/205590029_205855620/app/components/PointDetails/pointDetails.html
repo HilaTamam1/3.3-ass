@@ -1,0 +1,79 @@
+<div class="details">
+      <!-- <script src="aboutController.js"></script>  -->
+      </br>
+      <center>
+            <h1>{{pointDet.point[0].name}}</h1>
+      </center>
+      </br>
+      <span>
+            <img src="/assets/img/images.png" width=35px; height=35px;></img>
+            <span> {{pointDet.point[0].viewsNum}}</span>
+      </span>
+      <span>
+            <img src="/assets/img/rating.png" width=38px; height=38px;></img>
+            <span> {{pointDet.point[0].rate}}</span>
+      </span>
+      <span>
+            <img src="/assets/img/location.png" width=30px; height=30px;></img>
+            <span> {{pointDet.point[0].location}}</span>
+      </span>
+      <span>
+            <img style="position:absolute; right:0%;" ng-if="(!inFav() && login)" ng-click="updateFav()" src="/assets/img/emptyFav.png"
+                  width=30px; height=30px;></img>
+      </span>
+      <span>
+            <img style="position:absolute; right:0%;" ng-if="(inFav() && login)" ng-click="updateFav()" src="/assets/img/colorFav.png"
+                  width=30px; height=30px;></img>
+      </span>
+      <!-- <span><img src="components/PointDetails/image/images.png" width=35px; height=35px;></img><span> {{pointDet.point[0].viewsNum}}</span></span>
+      <span><img src="components/PointDetails/image/rating.png" width=38px; height=38px;></img><span> {{pointDet.point[0].rate}}</span></span>
+      <span><img src="components/PointDetails/image/location.png" width=30px; height=30px; ></img><span> {{pointDet.point[0].location}}</span></span>
+      <span><img style="position:absolute; right:0%;" src="components/PointDetails/image/emptyFav.png" width=30px; height=30px; ></img></span>
+      <span><img style="position:absolute; right:0%;" src="components/PointDetails/image/colorFav.png" width=30px; height=30px; ></img></span> -->
+
+      <br/>
+      <br/>
+
+      <div>
+            <b>Category: </b>
+            <span>{{pointDet.point[0].categoryName}}</span>
+      </div>
+      <div>
+            <b>Discription: </b>
+            <span>{{pointDet.point[0].desription}}</span>
+      </div>
+      <div>
+            <b>Last Reviews: </b>
+            <div>
+                  <span>{{pointDet.reviews[0].date}} </span>
+                  <span>{{pointDet.reviews[0].description}} </span>
+            </div>
+            <div>
+                  <span>{{pointDet.reviews[1].date}} </span>
+                  <span>{{pointDet.reviews[1].description}}</span>
+            </div>
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <div class="pic">
+                  <div class="w3-content w3-display-container">
+                        <img id="mySlides" class="mySlides" ng-src="{{pointDet.point[0].pic1}}" style="width:70%">
+                        <img id="mySlides" class="mySlides" ng-src="{{pointDet.point[0].pic2}}" style="width:70%">
+                        <img id="mySlides" class="mySlides" ng-src="{{pointDet.point[0].pic3}}" style="width:70%">
+                        <button id="mySlides" class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                        <button id="mySlides" class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+                  </div>
+            </div>
+            <br/>
+            <div id='map'></div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+
+      </div>

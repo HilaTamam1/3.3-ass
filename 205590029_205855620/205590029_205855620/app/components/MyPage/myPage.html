@@ -1,0 +1,91 @@
+<div style="padding-top:5%;">
+                <center>
+                        <h1>Your Berlin:</h1>
+                </center>
+        
+                <div class="split left">
+                        <center>
+                                <h1>2 popular points</h1>
+                        </center>
+                        <table ng-repeat="point in popularPoints" style="left: 10%; width:100%; top:50%; border-color:black; border: 1;" cellpadding=10
+                                cellspacing="0" width="100%">
+                                <tr>
+                                        <td colspan=3>
+                                                <h3>
+                                                        <center>
+                                                                <b>
+                                                                        <span ng-bind="point.name" ng-click="PointDetails(point.pointID)"></span>
+                                                                </b>
+                                                        </center>
+                                                </h3>
+                                                <center>
+                                                        <span>{{point.categoryName}}|</span>
+                                                        <span>
+                                                                <img src="/assets/img/rating.png" width=30px; height=30px;></img>
+                                                        </span>
+                                                        <span ng-bind="point.rate"></span>
+                                                </center>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td width="28%" align=center>
+                                                <img ng-style="{'height': '150px','width': '220px'}" style="border-radius: 8px;" ng-src="{{point.pic1}}" ng-click="PointDetails(point.pointID)">
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td width="70%">
+                                                <center>
+                                                        <!-- <span ng-bind="point.desription"></span> -->
+                                                        <img src="/assets/img/location.png" width=20px; height=20px;></img>
+                                                        <span ng-bind="point.location"></span>
+                                                </center>
+                                        </td>
+                                </tr>
+                        </table>
+                </div>
+        
+                <div class="split right">
+                        <center>
+                                <h1>Favorite Point Of You
+                                </h1>
+                                <h3 ng-if="errorShow">
+                                        {{error}}
+                                </h3>
+                        </center>
+                        <table ng-repeat="point in favPoints" style="left: 10%; width:100%; top:50%; border-color:black; border: 1;" cellpadding=10
+                                cellspacing="0" width="100%">
+                                <tr>
+                                        <td colspan=3>
+                                                <h3>
+                                                        <center>
+                                                                <b>
+                                                                        <span ng-bind="point.name" ng-click="PointDetails(point.pointID)"></span>
+                                                                </b>
+                                                        </center>
+                                                </h3>
+                                                <center>
+                                                        <span>{{point.categoryName}}|</span>
+                                                        <span>
+                                                                <img src="/assets/img/rating.png" width=30px; height=30px;></img>
+                                                        </span>
+                                                        <span ng-bind="point.rate"></span>
+                                                </center>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td width="28%" align=center>
+                                                <img ng-style="{'height': '150px','width': '220px'}" style="border-radius: 8px;" ng-src="{{point.pic1}}" ng-click="PointDetails(point.pointID)">
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td width="70%">
+                                                <center>
+                                                        <!-- <span ng-bind="point.desription"></span> -->
+                                                        <img src="/assets/img/location.png" width=20px; height=20px;></img>
+                                                        <span ng-bind="point.location"></span>
+                                                </center>
+                                        </td>
+                                </tr>
+                        </table>
+                </div>
+        </div>
